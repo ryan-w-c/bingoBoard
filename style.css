@@ -1,0 +1,124 @@
+body{
+  background-color: #292929;
+  color: black;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    background-color: white;
+  }
+}
+
+.widthFormat{
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
+  height: 100%;
+}
+
+.board{
+  color: white;
+  margin: auto;
+  height: 100%;
+  text-align: center;
+  padding-bottom: 10vh;
+}
+
+#boardContainer {
+  -webkit-print-color-adjust: exact !important;
+
+  background-color: rgb(92, 92, 92);
+  height: 100%;
+  width: 80%;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  gap: 1vh 1vh;
+  padding: 1vh;
+  
+  position: relative;
+
+}
+
+h1{
+  color: white;
+  font-size: 7vh;
+  text-align: center;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+h3{
+  width: 80%;
+  color: white;
+  margin: auto;
+  font-size: 3vh;
+  text-align: center;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: black;
+  border: solid;
+  border-bottom: black;
+  border-width: 1vh;
+  border-color: rgb(92, 92, 92);
+  padding: 1vh 0;
+}
+
+h3:hover {
+  background-color:rgb(155, 155, 155);
+}
+
+#currentLetter{
+  font-size: 9vh;
+  font-weight: bolder;
+  color: #292929;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+}
+
+#current{
+  font-size: 12vh;
+  font-weight: bolder;
+  color: #292929;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  padding-bottom: 4vh;
+}
+
+.boardLetter{
+  padding: 1vh;
+  color: red;
+  font-size: 3vh;
+  text-align: center;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: white;
+}
+
+.boardNum{
+  padding: 1vh;
+  color: white;
+  font-size: 3vh;
+  text-align: center;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: black;
+}
+
+p{
+  opacity: 0;
+  font-size: 2vh;
+}
