@@ -14,13 +14,19 @@ body{
   }
 }
 
-.widthFormat{
+:root {
+  --dark001: #1a1b1c;
+  --light001: #fafcfe;
+  --gray001:#E0E0E0;
+}
+
+/* .widthFormat{
   color: white;
   margin-left: auto;
   margin-right: auto;
   max-width: 1140px;
   height: 100%;
-}
+} */
 
 .board{
   color: white;
@@ -28,6 +34,55 @@ body{
   height: 100%;
   text-align: center;
   padding-bottom: 10vh;
+}
+
+/* .miniGrid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+} */
+
+.info__subtext {
+  font-family: Open Sans, sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--light001);
+  /* line-height: 165%; */
+  /* margin-bottom: 48px; */
+}
+
+.info__link {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Open Sans, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--light001);
+  background-color: var(--dark001);
+  border-radius: 50px;
+  border: 2px solid var(--light001);
+  padding: 5px 5px;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+label, input[type="text"] {
+  font-family: Open Sans, sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--dark001);
+  margin-top: 30px;
+  border-radius: 30px;
+  width: 40px;
+  text-align: center;
+}
+
+.info__link:hover, .info__link:focus {
+  background-color: var(--light001);
+  color: var(--dark001);
 }
 
 #boardContainer {
@@ -39,7 +94,7 @@ body{
   margin: auto;
 
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-template-columns: auto;
   gap: 1vh 1vh;
   padding: 1vh;
   
@@ -105,6 +160,7 @@ h3:hover {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   background-color: white;
+  min-width: 42px;
 }
 
 .boardNum{
@@ -116,6 +172,7 @@ h3:hover {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   background-color: black;
+  min-width: 42px;
 }
 
 p{

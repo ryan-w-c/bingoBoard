@@ -15,110 +15,100 @@
     </script>
   </head>
   <body>
+
+    <!-- <div id="myNav" class="overlay">
+      <div class="pop__card">
+        <main class="home">
+          <section class="pop">
+            <header class="pop__header">
+              <h1 class="info__title">Settings</h1>
+              <span class="info__spacer"></span>
+              <form>
+                <p class="info__subtext">Number Range per Column (5 - 19)</p>
+                <input type="text" id="range" value="15"><br>
+                <div id="saveButton" name="submit" class="info__link" onclick="save()">Save</div>
+              </form>
+            </header>
+          </section>  
+        </main>
+      </div>
+    </div> -->
+
     <div id="board">
       <h1>Bingo Numbers</h1>
       <h2 id="currentLetter">A</h2>
       <h2 id="current">0</h2>
       <h3 onclick=draw()>Draw Number</h3>
       <div id="boardContainer">
-        <div class="boardLetter">B</div>
-        <div class="boardNum">1</div>
-        <div class="boardNum">2</div>
-        <div class="boardNum">3</div>
-        <div class="boardNum">4</div>
-        <div class="boardNum">5</div>
-        <div class="boardNum">6</div>
-        <div class="boardNum">7</div>
-        <div class="boardNum">8</div>
-        <div class="boardNum">9</div>
-        <div class="boardNum">10</div>
-        <div class="boardNum">11</div>
-        <div class="boardNum">12</div>
-        <div class="boardNum">13</div>
-        <div class="boardNum">14</div>
-        <div class="boardNum">15</div>
-        <div class="boardLetter">I</div>
-        <div class="boardNum">16</div>
-        <div class="boardNum">17</div>
-        <div class="boardNum">18</div>
-        <div class="boardNum">19</div>
-        <div class="boardNum">20</div>
-        <div class="boardNum">21</div>
-        <div class="boardNum">22</div>
-        <div class="boardNum">23</div>
-        <div class="boardNum">24</div>
-        <div class="boardNum">25</div>
-        <div class="boardNum">26</div>
-        <div class="boardNum">27</div>
-        <div class="boardNum">28</div>
-        <div class="boardNum">29</div>
-        <div class="boardNum">30</div>
-        <div class="boardLetter">N</div>
-        <div class="boardNum">31</div>
-        <div class="boardNum">32</div>
-        <div class="boardNum">33</div>
-        <div class="boardNum">34</div>
-        <div class="boardNum">35</div>
-        <div class="boardNum">36</div>
-        <div class="boardNum">37</div>
-        <div class="boardNum">38</div>
-        <div class="boardNum">39</div>
-        <div class="boardNum">40</div>
-        <div class="boardNum">41</div>
-        <div class="boardNum">42</div>
-        <div class="boardNum">43</div>
-        <div class="boardNum">44</div>
-        <div class="boardNum">45</div>
-        <div class="boardLetter">G</div>
-        <div class="boardNum">46</div>
-        <div class="boardNum">47</div>
-        <div class="boardNum">48</div>
-        <div class="boardNum">49</div>
-        <div class="boardNum">50</div>
-        <div class="boardNum">51</div>
-        <div class="boardNum">52</div>
-        <div class="boardNum">53</div>
-        <div class="boardNum">54</div>
-        <div class="boardNum">55</div>
-        <div class="boardNum">56</div>
-        <div class="boardNum">57</div>
-        <div class="boardNum">58</div>
-        <div class="boardNum">59</div>
-        <div class="boardNum">60</div>
-        <div class="boardLetter">O</div>
-        <div class="boardNum">61</div>
-        <div class="boardNum">62</div>
-        <div class="boardNum">63</div>
-        <div class="boardNum">64</div>
-        <div class="boardNum">65</div>
-        <div class="boardNum">66</div>
-        <div class="boardNum">67</div>
-        <div class="boardNum">68</div>
-        <div class="boardNum">69</div>
-        <div class="boardNum">70</div>
-        <div class="boardNum">71</div>
-        <div class="boardNum">72</div>
-        <div class="boardNum">73</div>
-        <div class="boardNum">74</div>
-        <div class="boardNum">75</div>
+        <div id="letterB" class="miniGrid">
+          <div class="boardLetter">B</div>
+        </div>
+        <div id="letterI" class="miniGrid">
+          <div class="boardLetter">I</div>
+        </div>
+        <div id="letterN" class="miniGrid">
+          <div class="boardLetter">N</div>
+        </div>
+        <div id="letterG" class="miniGrid">
+          <div class="boardLetter">G</div>
+        </div>
+        <div id="letterO" class="miniGrid">
+          <div class="boardLetter">O</div>
+        </div>
       </div>
+    </div>
+
+
+    <div style="margin-top: 40px;">
+      <form>
+        <label class="info__subtext">Number Range per Column (5 - 19): </label>
+        <input type="text" id="range" value="15">
+        <div id="saveButton" name="submit" class="info__link" onclick="save()">Save</div>
+      </form>
     </div>
 
     <script>
       var temp = 0;
       var node;
       var num;
-      var boardNum = document.getElementsByClassName("boardNum");
-      var boardLetter = document.getElementsByClassName("boardLetter");
+      const boardNum = document.getElementsByClassName("boardNum");
+      const boardLetter = document.getElementsByClassName("boardLetter");
+      const miniGrids = document.querySelectorAll(".miniGrid");
       var drawNum = [];
+      var numberRange = 15;
+      const letter = [document.getElementById("letterB"), document.getElementById("letterI"), document.getElementById("letterN"), document.getElementById("letterG"), document.getElementById("letterO")];
+      const rangeID = document.getElementById("range");
+
+      window.onload = setUp();
+      
+      function setUp(){
+        node = "auto ";
+        for (var j = 0; j < numberRange; j++){
+          node += "auto ";
+        }
+        for (var i = 0; i < 5; i++){
+          for (var j = 0; j < numberRange; j++){
+            temp = document.createElement("div");
+            temp.className = "boardNum";
+            temp.innerHTML = (numberRange * i) + (j + 1);
+            letter[i].appendChild(temp);
+          }
+        }
+        for (var i = 0; i < 5; i++){
+          letter[i].style.display = "grid";
+          letter[i].style.gridTemplateColumns = node;   
+        }
+        temp = 0;
+        drawNum = [];
+      }
 
       function draw() {
         for (var i = 0; i < boardLetter.length; i++){
           boardLetter[i].style.backgroundColor = "white";
         }
 
-        while((drawNum.includes(temp) && drawNum.length < 75) || temp > 74 || (temp == 0 && drawNum.length == 0)) {
-          temp = Math.floor(Math.random()*75);
+        while((drawNum.includes(temp) && drawNum.length < (numberRange * 5)) || temp > (numberRange * 5 - 1) || (temp == 0 && drawNum.length == 0)) {
+          temp = Math.floor(Math.random()*(numberRange * 5));
         }
 
         num = document.getElementById("current");
@@ -132,16 +122,16 @@
         num.innerHTML = "";
         num.style.color = "white";
         drawNum.push(temp);
-        if (temp < 15){
+        if (temp < numberRange){
           node = document.createTextNode("B");
           boardLetter[0].style.backgroundColor = "yellow";
-        } else if (temp < 30){
+        } else if (temp < (numberRange * 2)){
           node = document.createTextNode("I");
           boardLetter[1].style.backgroundColor = "yellow";
-        } else if (temp < 45){
+        } else if (temp < (numberRange * 3)){
           node = document.createTextNode("N");
           boardLetter[2].style.backgroundColor = "yellow";
-        } else if (temp < 60){
+        } else if (temp < (numberRange * 4)){
           node = document.createTextNode("G");
           boardLetter[3].style.backgroundColor = "yellow";
         } else {
@@ -149,6 +139,27 @@
           boardLetter[4].style.backgroundColor = "yellow";
         }
         num.append(node);
+      }
+
+      function save() {
+        temp = rangeID.value;
+        if (isNaN(temp) || temp < 5 || temp > 19) {
+          rangeID.style.backgroundColor = "rgb(255, 0, 0, 0.5)";
+        } else {
+          destroy();
+          rangeID.style.backgroundColor = "white";
+          numberRange = rangeID.value;
+          // myNav.style.width = "0%";
+          setUp();
+        }
+      }
+
+      function destroy(){
+        for (var i = 0; i < 5; i++){
+          for (var j = 0; j < numberRange; j++){
+            letter[i].removeChild(letter[i].lastChild);
+          }
+        }
       }
 
     </script>
